@@ -53,7 +53,9 @@ OBJECTS_DIR   = ./
 SOURCES       = main.cpp qrc_qml.cpp
 OBJECTS       = main.o \
 		qrc_qml.o
-DIST          = /home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/features/spec_pre.prf \
+DIST          = components/ToolBox.qml \
+		components/qmldir \
+		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/unix.conf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/linux.conf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/sanitize.conf \
