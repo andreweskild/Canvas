@@ -1,0 +1,3 @@
+[submodule "ChickletQML"]
+	path = ChickletQML
+	url = https://github.com/andreweskild/ChickletQML.git
