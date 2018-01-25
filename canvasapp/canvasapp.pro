@@ -29,4 +29,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     components/ToolBox.qml \
-    components/qmldir
+    components/qmldir \
+    components/ToolGroup.qml

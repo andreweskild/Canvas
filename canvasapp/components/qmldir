@@ -1,3 +1,4 @@
 module components
 
 ToolBox 1.0 ToolBox.qml
+ToolGroup 1.0 ToolGroup.qml
