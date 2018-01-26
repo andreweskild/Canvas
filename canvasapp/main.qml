@@ -16,6 +16,11 @@ ApplicationWindow {
         ColorPalette.dark = true;
     }
 
+    ToolBoxSnapBox {
+        height: parent.height
+        anchors.left: parent.left
+    }
+
     ToolBox {
         id: tools
         x: 20
@@ -24,8 +29,9 @@ ApplicationWindow {
         title: "Tools"
 
         contentItem: ColumnLayout {
-            anchors.fill: parent
-            spacing: 12
+            id: content
+            width: 148
+            spacing: 16
 
             ToolGroup {
                 Layout.fillWidth: true
@@ -33,15 +39,54 @@ ApplicationWindow {
 
             RowLayout {
                 Layout.fillWidth: true
-                Layout.fillHeight: true
-                Dial {
-                    width: 64
-                    height: 64
+                height: opacityDial.height + opacityLabel.padding + opacityLabel.height
+                spacing: 12
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    Dial {
+                        id: opacityDial
+                        width: 56
+                        height: 56
+                        anchors.right: parent.right
+                        anchors.rightMargin: 4
+                        Label {
+                            id: opacityLabel
+                            topPadding: 8
+                            width: parent.width
+                            anchors.top: parent.bottom
+                            horizontalAlignment: Text.AlignHCenter
+                            text: "Opacity"
+                            color: ColorPalette.content
+                        }
+                    }
                 }
-                Dial {
-                    width: 64
-                    height: 64
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    Dial {
+                        width: 56
+                        height: 56
+                        anchors.left: parent.left
+                        anchors.leftMargin: 4
+                        Label {
+                            topPadding: 8
+                            width: parent.width
+                            anchors.top: parent.bottom
+                            horizontalAlignment: Text.AlignHCenter
+                            text: "Thickness"
+                            color: ColorPalette.content
+                        }
+                    }
                 }
+
+            }
+
+            UndoRedoButton {
+                Layout.fillWidth: true
+                height: 32
             }
         }
     }

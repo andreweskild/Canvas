@@ -30,4 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     components/ToolBox.qml \
     components/qmldir \
-    components/ToolGroup.qml
+    components/ToolGroup.qml \
+    components/UndoRedoButton.qml \
+    components/ToolBoxSnapBox.qml \
+    components/InteractiveRect.qml

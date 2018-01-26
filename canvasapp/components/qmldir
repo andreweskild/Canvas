@@ -1,4 +1,7 @@
 module components
 
+
 ToolBox 1.0 ToolBox.qml
+ToolBoxSnapBox 1.0 ToolBoxSnapBox.qml
 ToolGroup 1.0 ToolGroup.qml
+UndoRedoButton 1.0 UndoRedoButton.qml

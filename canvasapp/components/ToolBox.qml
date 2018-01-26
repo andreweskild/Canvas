@@ -1,67 +1,74 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.3
+import QtQuick.Window 2.3
 import QtQuick.Shapes 1.0
 import styleplugin 1.0
 
 Item {
     id: control
-    implicitWidth: resizeHandle.x + resizeHandle.width
-    implicitHeight: resizeHandle.y + resizeHandle.height
+    // width calculated by content width + left and right padding
+    width: loader.width + 16
+    // height calculated by content + titlebar + titlebar padding + bottom padding
+    height: snapped ? parent.height : loader.height + titlebar.height + loader.anchors.topMargin + 12
+
+    Behavior on x { SmoothedAnimation { velocity: 1800 } }
+    Behavior on y { SmoothedAnimation { velocity: 1800 } }
+    Behavior on height { SmoothedAnimation { velocity: 1800 } }
 
     property string title: "Hello World"
+
     property Component contentItem
 
+    property bool snapped: false
 
-
-    ShadowItem {
-        anchors.fill: parent
-        hidden: false
-    }
-
-    Rectangle {
-        anchors.fill: parent
-        radius: 4
-        color: ColorPalette.window
-
-        Shape {
-            id: resizeHandle
-            y: 400
-            x: 200
-            property int radius: 4
-            width: 16
-            height: 16
-            ShapePath {
-                fillColor: ColorPalette.raised
-                strokeWidth: -1
-                startX: resizeHandle.width; startY: 0
-                PathLine { x: resizeHandle.width; y: resizeHandle.height - resizeHandle.radius; }
-                PathArc { radiusX: 4; radiusY: 4;
-                    x: resizeHandle.width - resizeHandle.radius; y: resizeHandle.height }
-                PathLine { x: 0; y: resizeHandle.height }
-                PathLine { x: resizeHandle.width; y: 0 }
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.SizeFDiagCursor
-                drag.target: resizeHandle
-                drag.minimumX: 150
-                drag.maximumX: 250
-                drag.minimumY: 350
-                drag.maximumY: 450
-            }
+    onSnappedChanged: {
+        if(snapped) {
+            y = 0;
+            x = 0;
         }
     }
 
-    Item {
+    Drag.active: titlebar.drag.active
+    Drag.keys: "toolbox"
+
+    Drag.onActiveChanged: {
+        if(Drag.active) {
+            snapped = false;
+        }
+    }
+
+    ShadowItem {
+        anchors.fill: parent
+        hidden: snapped
+    }
+
+    Rectangle {
+        id: background
+        anchors.fill: parent
+        radius: snapped ? 0 : 4
+        color: ColorPalette.window
+    }
+
+    MouseArea {
         id: titlebar
+        drag.target: control
+        drag.minimumX: 0
+        drag.minimumY: 0
+
+        drag.maximumX: Window.width - control.width
+        drag.maximumY: Window.height - control.height
         height: 24
         width: parent.width
+        onReleased: control.snapped = control.Drag.target !== null ? control.Drag.target.readyToSnap
+                                                                   : false
+
+
         clip: true
+
         Rectangle {
             width: parent.width
             height: parent.height + radius
-            radius: 4
+            radius: snapped ? 0 : 4
             color: ColorPalette.raised
         }
         Label {
@@ -72,25 +79,14 @@ Item {
             verticalAlignment: Text.AlignVCenter
             color: ColorPalette.content
         }
-
-        MouseArea {
-            id: dragArea
-            anchors.fill: parent
-
-            drag.target: control
-        }
-
-
     }
-    Item {
-        height: parent.height - titlebar.height - 32
-        width: parent.width - 16
-        y: titlebar.height + 16
-        x: 8
+
         Loader {
-            anchors.fill: parent
+            id: loader
+            anchors.topMargin: 12
+            anchors.top: titlebar.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
             sourceComponent: contentItem
         }
-    }
 
 }

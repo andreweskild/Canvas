@@ -1,10 +1,11 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.3
+import QtQuick.Layouts 1.3
 import styleplugin 1.0
 
 Item {
     implicitWidth: 96
-    implicitHeight: listView.height + 16
+    implicitHeight: listView.height + miscTools.height + 16
 
     ShadowItem {
         anchors.fill: parent
@@ -20,7 +21,8 @@ Item {
         id: listView
         width: parent.width
         height: contentItem.height
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 8
         model: ListModel {
             ListElement { sender: "PENCIL"}
             ListElement { sender: "PEN" }
@@ -36,7 +38,7 @@ Item {
             id: swipeDelegate
             text: model.sender
             width: parent.width
-            height: 48
+            height: 32
 
 
             swipe.right: Label {
@@ -54,6 +56,31 @@ Item {
                     color: deleteLabel.SwipeDelegate.pressed ? Qt.darker("tomato", 1.1) : "tomato"
                 }
             }
+        }
+    }
+
+    RowLayout {
+        id: miscTools
+        height: 32
+        width: listView.width
+        anchors.top: listView.bottom
+        spacing: 0
+
+        InteractiveRect {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
+        InteractiveRect {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
+        InteractiveRect {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
+        InteractiveRect {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
     }
 }

@@ -56,6 +56,9 @@ OBJECTS       = main.o \
 DIST          = components/ToolBox.qml \
 		components/qmldir \
 		components/ToolGroup.qml \
+		components/UndoRedoButton.qml \
+		components/ToolBoxSnapBox.qml \
+		components/InteractiveRect.qml \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/unix.conf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/linux.conf \
