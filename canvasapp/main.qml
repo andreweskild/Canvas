@@ -30,4 +30,8 @@ ApplicationWindow {
         y: parent.height - height
     }
 
+    ColorsToolBox {
+        x: parent.width - width
+    }
+
 }

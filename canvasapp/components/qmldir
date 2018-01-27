@@ -7,3 +7,5 @@ ToolGroup 1.0 ToolGroup.qml
 UndoRedoButton 1.0 UndoRedoButton.qml
 
 LayersList 1.0 LayersList.qml
+
+ColorSelectionSquare 1.0 ColorSelectionSquare.qml

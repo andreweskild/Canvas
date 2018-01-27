@@ -2,3 +2,4 @@ module toolboxes
 
 ToolsToolBox 1.0 ToolsToolBox.qml
 LayersToolBox 1.0 LayersToolBox.qml
+ColorsToolBox 1.0 ColorsToolBox.qml
