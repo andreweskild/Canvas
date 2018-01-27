@@ -13,7 +13,7 @@ DropArea {
     property bool readyToSnap: false
 
     Timer {
-        interval: 600
+        interval: 500
         running: dragTarget.containsDrag
         repeat: false
 

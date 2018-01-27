@@ -59,6 +59,10 @@ DIST          = components/ToolBox.qml \
 		components/UndoRedoButton.qml \
 		components/ToolBoxSnapBox.qml \
 		components/InteractiveRect.qml \
+		toolboxes/ToolsToolBox.qml \
+		toolboxes/qmldir \
+		toolboxes/LayersToolBox.qml \
+		components/LayersList.qml \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/unix.conf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/linux.conf \

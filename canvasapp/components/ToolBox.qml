@@ -7,13 +7,14 @@ import styleplugin 1.0
 Item {
     id: control
     // width calculated by content width + left and right padding
-    width: loader.width + 16
+    width: loader.status === Loader.Null ? 120 : loader.width + 16
     // height calculated by content + titlebar + titlebar padding + bottom padding
-    height: snapped ? parent.height : loader.height + titlebar.height + loader.anchors.topMargin + 12
+    height: loader.status === Loader.Null ? 256 :
+        (snapped ? parent.height : loader.height + titlebar.height + loader.anchors.topMargin + 12)
 
-    Behavior on x { SmoothedAnimation { velocity: 1800 } }
-    Behavior on y { SmoothedAnimation { velocity: 1800 } }
-    Behavior on height { SmoothedAnimation { velocity: 1800 } }
+    Behavior on x { SmoothedAnimation { velocity: 2000 } }
+    Behavior on y { SmoothedAnimation { velocity: 2000 } }
+    Behavior on height { SmoothedAnimation { velocity: 2000 } }
 
     property string title: "Hello World"
 

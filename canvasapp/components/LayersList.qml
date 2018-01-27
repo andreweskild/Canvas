@@ -5,7 +5,7 @@ import styleplugin 1.0
 
 Item {
     implicitWidth: 96
-    implicitHeight: listView.height + miscTools.height + 16
+    implicitHeight: listView.height + 16
 
     ShadowItem {
         anchors.fill: parent
@@ -23,14 +23,12 @@ Item {
         height: contentItem.height
         anchors.top: parent.top
         anchors.topMargin: 8
-        interactive: false
+        clip: true
         model: ListModel {
-            ListElement { sender: "PENCIL"}
-            ListElement { sender: "PEN" }
-            ListElement { sender: "MARKER"}
-            ListElement { sender: "PAINT" }
-            ListElement { sender: "ERASER" }
-            ListElement { sender: "SMUDGER" }
+            ListElement { sender: "LAYER 3"}
+            ListElement { sender: "LAYER 2" }
+            ListElement { sender: "LAYER 3"}
+            ListElement { sender: "BACKGROUND" }
         }
 
 
@@ -54,34 +52,9 @@ Item {
                 SwipeDelegate.onClicked: listView.model.remove(index)
 
                 background: Rectangle {
-                    color: deleteLabel.SwipeDelegate.pressed ? Qt.darker("tomato", 1.1) : ColorPalette.sunken
+                    color: deleteLabel.SwipeDelegate.pressed ? Qt.darker("tomato", 1.1) : "tomato"
                 }
             }
-        }
-    }
-
-    RowLayout {
-        id: miscTools
-        height: 32
-        width: listView.width
-        anchors.top: listView.bottom
-        spacing: 0
-
-        InteractiveRect {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-        }
-        InteractiveRect {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-        }
-        InteractiveRect {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-        }
-        InteractiveRect {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
         }
     }
 }
