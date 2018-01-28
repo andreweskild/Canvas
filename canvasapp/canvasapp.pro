@@ -39,4 +39,6 @@ DISTFILES += \
     toolboxes/LayersToolBox.qml \
     components/LayersList.qml \
     toolboxes/ColorsToolBox.qml \
-    components/ColorSelectionSquare.qml
+    components/ColorSelectionSquare.qml \
+    components/HueSelectionSlider.qml \
+    components/ColorSelectionControl.qml

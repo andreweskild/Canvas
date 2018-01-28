@@ -8,4 +8,6 @@ UndoRedoButton 1.0 UndoRedoButton.qml
 
 LayersList 1.0 LayersList.qml
 
+ColorSelectionControl 1.0 ColorSelectionControl.qml
 ColorSelectionSquare 1.0 ColorSelectionSquare.qml
+HueSelectionSlider 1.0 HueSelectionSlider.qml

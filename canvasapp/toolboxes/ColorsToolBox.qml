@@ -13,7 +13,7 @@ ToolBox {
         width: 148
         spacing: 8
 
-        ColorSelectionSquare {
+        ColorSelectionControl {
             Layout.fillWidth: true
             height: 128
         }
