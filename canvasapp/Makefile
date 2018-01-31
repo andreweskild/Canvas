@@ -57,7 +57,6 @@ DIST          = components/ToolBox.qml \
 		components/qmldir \
 		components/ToolGroup.qml \
 		components/UndoRedoButton.qml \
-		components/ToolBoxSnapBox.qml \
 		components/InteractiveRect.qml \
 		toolboxes/ToolsToolBox.qml \
 		toolboxes/qmldir \
@@ -67,6 +66,7 @@ DIST          = components/ToolBox.qml \
 		components/ColorSelectionSquare.qml \
 		components/HueSelectionSlider.qml \
 		components/ColorSelectionControl.qml \
+		components/ColorPreviewButton.qml \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/unix.conf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/linux.conf \

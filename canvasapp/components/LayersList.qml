@@ -5,7 +5,7 @@ import styleplugin 1.0
 
 Item {
     implicitWidth: 96
-    implicitHeight: listView.height + 16
+    implicitHeight: listView.height + 20
 
     ShadowItem {
         anchors.fill: parent
@@ -14,7 +14,7 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: ColorPalette.raised
-        radius: 4
+        radius: 5
     }
 
     ListView {
@@ -22,7 +22,7 @@ Item {
         width: parent.width
         height: contentItem.height
         anchors.top: parent.top
-        anchors.topMargin: 8
+        anchors.topMargin: 10
         clip: true
         model: ListModel {
             ListElement { sender: "LAYER 3"}
@@ -37,7 +37,7 @@ Item {
             id: swipeDelegate
             text: model.sender
             width: parent.width
-            height: 32
+            height: 30
 
 
             swipe.right: Label {
@@ -45,7 +45,7 @@ Item {
                 text: qsTr("Delete")
                 color: "white"
                 verticalAlignment: Label.AlignVCenter
-                padding: 12
+                padding: 10
                 height: parent.height
                 anchors.right: parent.right
 

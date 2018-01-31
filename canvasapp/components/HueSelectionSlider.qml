@@ -5,14 +5,14 @@ import styleplugin 1.0
 
 Item {
     id: root
-    width: 24
+    width: 20
     height: 72
     readonly property real hue: slider.value
     Slider {
         id: slider
-        height: parent.height + 16
+        height: parent.height + 10
         width: parent.width
-        y: -8
+        y: -5
         from: 1.0
         to: 0.0
         orientation: Qt.Vertical
@@ -47,24 +47,31 @@ Item {
             Rectangle {
                 id: background
                 anchors.fill: parent
-                radius: 4
+                radius: 5
                 color: Qt.hsva(root.hue, 1.0, 1.0, 1.0)
                 border.width: 3
-                border.color: "white"
+                border.color: slider.pressed ? "white" :
+                    slider.hovered ? ColorPalette.accent : "white"
+                Behavior on border.color {
+                    ColorAnimation {
+                        duration: 150
+                        easing {
+                            type: Easing.InOutSine
+                        }
+                    }
+                }
             }
 
         }
 
         background:Item {
-            height: parent.height - 16
-            width: parent.width
-            y: 8
-            clip: true
+            height: parent.height - 10
+            width: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: 5
             Rectangle {
-                width: parent.width + 4
-                height: parent.height
-                x: -4
-                radius: 4
+                anchors.fill: parent
+                radius: 5
                 gradient: Gradient {
                     GradientStop {
                        position: 0.000

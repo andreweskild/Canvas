@@ -7,10 +7,10 @@ import styleplugin 1.0
 Item {
     id: control
     // width calculated by content width + left and right padding
-    width: loader.status === Loader.Null ? 120 : loader.width + 16
+    width: loader.status === Loader.Null ? 120 : loader.width + 20
     // height calculated by content + titlebar + titlebar padding + bottom padding
     height: loader.status === Loader.Null ? 256 :
-        (snapped ? parent.height : loader.height + titlebar.height + loader.anchors.topMargin + 12)
+        loader.height + titlebar.height + loader.anchors.topMargin + 15
 
     Behavior on x { SmoothedAnimation { velocity: 2000 } }
     Behavior on y { SmoothedAnimation { velocity: 2000 } }
@@ -20,33 +20,17 @@ Item {
 
     property Component contentItem
 
-    property bool snapped: false
-
-    onSnappedChanged: {
-        if(snapped) {
-            y = 0;
-            x = 0;
-        }
-    }
-
     Drag.active: titlebar.drag.active
-    Drag.keys: "toolbox"
 
-    Drag.onActiveChanged: {
-        if(Drag.active) {
-            snapped = false;
-        }
-    }
 
     ShadowItem {
         anchors.fill: parent
-        hidden: snapped
     }
 
     Rectangle {
         id: background
         anchors.fill: parent
-        radius: snapped ? 0 : 4
+        radius: 5
         color: ColorPalette.window
     }
 
@@ -58,10 +42,10 @@ Item {
 
         drag.maximumX: Window.width - control.width
         drag.maximumY: Window.height - control.height
-        height: 24
+        drag.threshold: 0
+        height: 20
         width: parent.width
-        onReleased: control.snapped = control.Drag.target !== null ? control.Drag.target.readyToSnap
-                                                                   : false
+        cursorShape: pressed ? Qt.ClosedHandCursor : Qt.OpenHandCursor
 
 
         clip: true
@@ -69,11 +53,11 @@ Item {
         Rectangle {
             width: parent.width
             height: parent.height + radius
-            radius: snapped ? 0 : 4
+            radius: 5
             color: ColorPalette.raised
         }
         Label {
-            leftPadding: 8
+            leftPadding: 10
             anchors.fill: parent
             text: control.title
             font.bold: true
@@ -82,12 +66,12 @@ Item {
         }
     }
 
-        Loader {
-            id: loader
-            anchors.topMargin: 12
-            anchors.top: titlebar.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            sourceComponent: contentItem
-        }
+    Loader {
+        id: loader
+        anchors.topMargin: 15
+        anchors.top: titlebar.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        sourceComponent: contentItem
+    }
 
 }

@@ -1,23 +1,32 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.3
+import QtQuick.Layouts 1.3
 import styleplugin 1.0
 
-Item {
-    height: 24
+RowLayout {
+    height: 20
     width: 96
 
-    ShadowItem {
-        anchors.fill: parent
-        hovered: undoMouseArea.containsMouse && !undoMouseArea.pressed ||
-                 redoMouseArea.containsMouse && !redoMouseArea.pressed
+//    ShadowItem {
+//        anchors.left: parent.left
+//        height: undoMouseArea.height
+//        width: undoMouseArea.width
+//        hovered: undoMouseArea.containsMouse
+//        hidden: undoMouseArea.pressed
 
-    }
+//    }
+//    ShadowItem {
+//        anchors.right: parent.right
+//        height: redoMouseArea.height
+//        width: redoMouseArea.width
+//        hovered: redoMouseArea.containsMouse
+//        hidden: redoMouseArea.pressed
+
+//    }
 
     Item {
-        anchors.left: parent.left
-        height: parent.height
-        width: parent.width / 2
-        clip: true
+        height: 20
+        Layout.fillWidth: true
         transform: Translate {
             y: undoMouseArea.pressed ? 2 : 0
 
@@ -38,7 +47,7 @@ Item {
             GenericInteractiveRounded {
                 anchors.left: parent.left
                 height: parent.height
-                width: parent.width + 4
+                width: parent.width
                 hovered: undoMouseArea.containsMouse
                 pressed: undoMouseArea.pressed
             }
@@ -76,14 +85,14 @@ Item {
             GenericInteractiveRounded {
                 anchors.right: parent.right
                 height: parent.height
-                width: parent.width + 4
+                width: parent.width
                 hovered: redoMouseArea.containsMouse
                 pressed: redoMouseArea.pressed
             }
             Text {
                 anchors.centerIn: parent
                 text: "REDO"
-                color: undoMouseArea.containsMouse ? ColorPalette.contentSecondary :
+                color: redoMouseArea.containsMouse ? ColorPalette.contentSecondary :
                                                      ColorPalette.content
             }
         }

@@ -4,8 +4,8 @@ import QtQuick.Layouts 1.3
 import styleplugin 1.0
 
 Item {
-    implicitWidth: 96
-    implicitHeight: listView.height + miscTools.height + 16
+    implicitWidth: 95
+    implicitHeight: listView.height + miscTools.height + 20
 
     ShadowItem {
         anchors.fill: parent
@@ -14,7 +14,7 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: ColorPalette.raised
-        radius: 4
+        radius: 5
     }
 
     ListView {
@@ -22,7 +22,7 @@ Item {
         width: parent.width
         height: contentItem.height
         anchors.top: parent.top
-        anchors.topMargin: 8
+        anchors.topMargin: 10
         interactive: false
         model: ListModel {
             ListElement { sender: "PENCIL"}
@@ -39,7 +39,7 @@ Item {
             id: swipeDelegate
             text: model.sender
             width: parent.width
-            height: 32
+            height: 30
 
 
             swipe.right: Label {
@@ -47,7 +47,7 @@ Item {
                 text: qsTr("Delete")
                 color: "white"
                 verticalAlignment: Label.AlignVCenter
-                padding: 12
+                padding: 10
                 height: parent.height
                 anchors.right: parent.right
 
@@ -62,7 +62,7 @@ Item {
 
     RowLayout {
         id: miscTools
-        height: 32
+        height: 30
         width: listView.width
         anchors.top: listView.bottom
         spacing: 0

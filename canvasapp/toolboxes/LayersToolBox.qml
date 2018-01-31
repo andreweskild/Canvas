@@ -1,6 +1,7 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import styleplugin 1.0
 import components 1.0
 
 ToolBox {
@@ -10,21 +11,21 @@ ToolBox {
 
     contentItem: ColumnLayout {
         id: content
-        width: 148
-        spacing: 8
+        width: 140
+        spacing: 10
 
-        RowLayout {
+        ColumnLayout{
             Layout.fillWidth: true
-            height: layerOpacitySlider.height
-            spacing: 8
-
+            Layout.fillHeight: true
+            spacing: 5
             Label {
-                text: "Opacity"
-            }
-
-            Slider {
-                id: layerOpacitySlider
                 Layout.fillWidth: true
+                text: "Layer Opacity"
+                color: ColorPalette.content
+            }
+            Slider {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
             }
         }
 

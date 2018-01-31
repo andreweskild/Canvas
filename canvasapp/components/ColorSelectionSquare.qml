@@ -9,43 +9,38 @@ Item {
     height: 64
     width: 64
     property real hue
-    readonly property color selectedColor: Qt.hsva(hue, draggableArea.saturation, draggableArea.value, 1.0)
-    Item {
-        anchors.fill: parent
-        clip: true
-        Rectangle {
-            width: parent.width + 4
-            height: parent.height
-            radius: 4
-            layer.enabled: true
-        // Main Value and Saturation selection control
-            layer.effect: ShaderEffect {
-                property color hue: Qt.hsva(root.hue, 1.0, 1.0, 1.0)
-                fragmentShader: "
-                    uniform lowp sampler2D source;
-                    varying highp vec2 qt_TexCoord0;
-                    uniform highp vec4 hue;
-                    uniform lowp float qt_Opacity;
-                    void main() {
-                        lowp vec4 p = texture2D(source, qt_TexCoord0);
-                        highp float value = qt_TexCoord0.y;
-                        highp float saturation = qt_TexCoord0.x;
-                        highp vec4 greyColor = mix(vec4(1.0, 1.0, 1.0, 1.0), vec4(0.0, 0.0 ,0.0 ,1.0), value);
-                        highp vec4 hueColor = mix(vec4(1.0, 1.0, 1.0, 1.0), hue, saturation);
-                        gl_FragColor = greyColor * hueColor * p * qt_Opacity;
-                    }"
-            }
-        }
+    property real saturation: mouseArea.x / mouseArea.drag.maximumX
+    property real value: 1.0 - mouseArea.y / mouseArea.drag.maximumY
 
+    Rectangle {
+        anchors.fill: parent
+        radius: 5
+        layer.enabled: true
+    // Main Value and Saturation selection control
+        layer.effect: ShaderEffect {
+            property color hue: Qt.hsva(root.hue, 1.0, 1.0, 1.0)
+            fragmentShader: "
+                uniform lowp sampler2D source;
+                varying highp vec2 qt_TexCoord0;
+                uniform highp vec4 hue;
+                uniform lowp float qt_Opacity;
+                void main() {
+                    lowp vec4 p = texture2D(source, qt_TexCoord0);
+                    highp float value = qt_TexCoord0.y;
+                    highp float saturation = qt_TexCoord0.x;
+                    highp vec4 greyColor = mix(vec4(1.0, 1.0, 1.0, 1.0), vec4(0.0, 0.0 ,0.0 ,1.0), value);
+                    highp vec4 hueColor = mix(vec4(1.0, 1.0, 1.0, 1.0), hue, saturation);
+                    gl_FragColor = greyColor * hueColor * p * qt_Opacity;
+                }"
+        }
     }
+
 
     MouseArea {
         id: draggableArea
-        height: root.height + 12
-        width: root.width + 12
+        height: root.height + 10
+        width: root.width + 10
         anchors.centerIn: root
-        property real saturation: mouseArea.x / mouseArea.drag.maximumX
-        property real value: 1.0 - mouseArea.y / mouseArea.drag.maximumY
         onMouseXChanged: {
             mouseArea.x = Math.max(Math.min(mouseArea.drag.maximumX, mouse.x - mouseArea.width * .5),
                                    mouseArea.drag.minimumX);
@@ -57,8 +52,9 @@ Item {
 
         MouseArea {
             id: mouseArea
-            height: 24
-            width: 24
+            height: 20
+            width: 20
+            hoverEnabled: true
 
             drag.target: this
             drag.threshold: 0
@@ -72,14 +68,37 @@ Item {
                 anchors.fill: parent
                 hovered: mouseArea.containsMouse
                 hidden: mouseArea.pressed
+                radius: height / 2
             }
 
             Rectangle {
                 anchors.fill: parent
-                color: root.selectedColor
-                radius: 12
+                color: Qt.hsva(hue, saturation, value, 1.0)
+                radius: 10
                 border.width: 3
-                border.color: "white"
+                border.color: mouseArea.pressed || draggableArea.pressed ? "white" :
+                    mouseArea.containsMouse ? ColorPalette.accent : "white"
+                transform: Translate {
+                    y: mouseArea.pressed ? 2 : 0
+
+
+                    Behavior on y {
+                        NumberAnimation {
+                            duration: 100
+                            easing {
+                                type: Easing.InOutSine
+                            }
+                        }
+                    }
+                }
+                Behavior on border.color {
+                    ColorAnimation {
+                        duration: 150
+                        easing {
+                            type: Easing.InOutSine
+                        }
+                    }
+                }
             }
         }
     }

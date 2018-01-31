@@ -13,63 +13,65 @@ ToolBox {
 
     contentItem: ColumnLayout {
         id: content
-        width: 148
-        spacing: 16
+        width: 140
+        spacing: 15
 
         ToolGroup {
             Layout.fillWidth: true
         }
 
-        RowLayout {
+        ColumnLayout {
             Layout.fillWidth: true
-            height: opacityDial.height + opacityLabel.padding + opacityLabel.height
-            spacing: 12
-            Item {
+            spacing: 10
+
+            ColumnLayout{
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-
-                Dial {
-                    id: opacityDial
-                    width: 56
-                    height: 56
-                    anchors.right: parent.right
-                    anchors.rightMargin: 4
-                    Label {
-                        id: opacityLabel
-                        topPadding: 8
-                        width: parent.width
-                        anchors.top: parent.bottom
-                        horizontalAlignment: Text.AlignHCenter
-                        text: "Opacity"
-                        color: ColorPalette.content
-                    }
+                spacing: 5
+                Label {
+                    Layout.fillWidth: true
+                    text: "Opacity"
+                    color: ColorPalette.content
+                }
+                Slider {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
                 }
             }
-            Item {
+            ColumnLayout{
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-
-                Dial {
-                    width: 56
-                    height: 56
-                    anchors.left: parent.left
-                    anchors.leftMargin: 4
-                    Label {
-                        topPadding: 8
-                        width: parent.width
-                        anchors.top: parent.bottom
-                        horizontalAlignment: Text.AlignHCenter
-                        text: "Thickness"
-                        color: ColorPalette.content
-                    }
+                spacing: 5
+                Label {
+                    Layout.fillWidth: true
+                    text: "Thickness"
+                    color: ColorPalette.content
+                }
+                Slider {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
                 }
             }
-
         }
 
-        UndoRedoButton {
+//        UndoRedoButton {
+//            Layout.fillWidth: true
+//            height: 30
+//        }
+
+        RowLayout {
             Layout.fillWidth: true
-            height: 32
+
+            Button {
+                height: 30
+                Layout.fillWidth: true
+                text: "UNDO"
+            }
+            Button {
+                height: 30
+                Layout.fillWidth: true
+                text: "REDO"
+            }
         }
     }
 }

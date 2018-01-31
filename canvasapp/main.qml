@@ -13,22 +13,14 @@ ApplicationWindow {
     title: qsTr("Hello World")
     color: "white"
 
-    Component.onCompleted: {
-        ColorPalette.dark = true;
-    }
-
-    ToolBoxSnapBox {
-        height: parent.height
-        anchors.left: parent.left
-    }
 
     ToolsToolBox {
-
     }
 
     LayersToolBox {
         y: parent.height - height
     }
+
 
     ColorsToolBox {
         x: parent.width - width

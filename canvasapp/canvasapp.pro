@@ -32,7 +32,6 @@ DISTFILES += \
     components/qmldir \
     components/ToolGroup.qml \
     components/UndoRedoButton.qml \
-    components/ToolBoxSnapBox.qml \
     components/InteractiveRect.qml \
     toolboxes/ToolsToolBox.qml \
     toolboxes/qmldir \
@@ -41,4 +40,5 @@ DISTFILES += \
     toolboxes/ColorsToolBox.qml \
     components/ColorSelectionSquare.qml \
     components/HueSelectionSlider.qml \
-    components/ColorSelectionControl.qml
+    components/ColorSelectionControl.qml \
+    components/ColorPreviewButton.qml
