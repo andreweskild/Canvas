@@ -20,12 +20,13 @@ ToolBox {
             spacing: 5
             Label {
                 Layout.fillWidth: true
-                text: "Layer Opacity"
+                text: "Layer Opacity:"
                 color: ColorPalette.content
             }
             Slider {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                value: 1
             }
         }
 

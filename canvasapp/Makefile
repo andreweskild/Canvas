@@ -67,6 +67,8 @@ DIST          = components/ToolBox.qml \
 		components/HueSelectionSlider.qml \
 		components/ColorSelectionControl.qml \
 		components/ColorPreviewButton.qml \
+		components/ColorSwatchesList.qml \
+		components/ColorSwatchItem.qml \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/unix.conf \
 		/home/andreweskild/Qt/5.10.0/gcc_64/mkspecs/common/linux.conf \

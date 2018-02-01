@@ -32,6 +32,8 @@ Item {
         anchors.fill: parent
         radius: 5
         color: ColorPalette.window
+        border.color: Qt.darker(color, 1.1)
+        border.width: 1
     }
 
     MouseArea {
@@ -55,6 +57,8 @@ Item {
             height: parent.height + radius
             radius: 5
             color: ColorPalette.raised
+            border.color: Qt.darker(color, 1.1)
+            border.width: 1
         }
         Label {
             leftPadding: 10

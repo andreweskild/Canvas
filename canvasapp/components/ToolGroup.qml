@@ -24,6 +24,7 @@ Item {
         anchors.top: parent.top
         anchors.topMargin: 10
         interactive: false
+        clip: true
         model: ListModel {
             ListElement { sender: "PENCIL"}
             ListElement { sender: "PEN" }

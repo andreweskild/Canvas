@@ -30,7 +30,7 @@ ToolBox {
                 spacing: 5
                 Label {
                     Layout.fillWidth: true
-                    text: "Opacity"
+                    text: "Opacity:"
                     color: ColorPalette.content
                 }
                 Slider {
@@ -44,7 +44,7 @@ ToolBox {
                 spacing: 5
                 Label {
                     Layout.fillWidth: true
-                    text: "Thickness"
+                    text: "Thickness:"
                     color: ColorPalette.content
                 }
                 Slider {

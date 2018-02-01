@@ -41,4 +41,6 @@ DISTFILES += \
     components/ColorSelectionSquare.qml \
     components/HueSelectionSlider.qml \
     components/ColorSelectionControl.qml \
-    components/ColorPreviewButton.qml
+    components/ColorPreviewButton.qml \
+    components/ColorSwatchesList.qml \
+    components/ColorSwatchItem.qml

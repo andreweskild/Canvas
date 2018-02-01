@@ -35,6 +35,11 @@ ToolBox {
                 text: colorPreview.color
             }
         }
+
+        ColorSwatchesList {
+            Layout.fillWidth: true
+            z: -10
+        }
     }
 
 }

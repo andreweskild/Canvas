@@ -12,3 +12,5 @@ ColorSelectionControl 1.0 ColorSelectionControl.qml
 ColorSelectionSquare 1.0 ColorSelectionSquare.qml
 HueSelectionSlider 1.0 HueSelectionSlider.qml
 ColorPreviewButton 1.0 ColorPreviewButton.qml
+ColorSwatchesList 1.0 ColorSwatchesList.qml
+ColorSwatchItem 1.0 ColorSwatchItem.qml
