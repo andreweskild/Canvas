@@ -14,7 +14,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        radius: 5
+        radius: 4
         layer.enabled: true
     // Main Value and Saturation selection control
         layer.effect: ShaderEffect {

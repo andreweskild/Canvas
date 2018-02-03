@@ -16,7 +16,7 @@ Item {
         height: parent.height - 10
         y: 10
         color: ColorPalette.sunken
-        radius: 5
+        radius: 4
         border.color: Qt.darker(color, 1.1)
         border.width: 1
     }

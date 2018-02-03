@@ -11,7 +11,7 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: ColorPalette.sunken
-        radius: 5
+        radius: 4
     }
 
     MouseArea {
@@ -41,7 +41,7 @@ Item {
         Rectangle {
             anchors.fill: parent
             color: root.color
-            radius: 5
+            radius: 4
         }
     }
 }

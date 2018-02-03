@@ -7,23 +7,127 @@ import components 1.0
 import toolboxes 1.0
 
 ApplicationWindow {
+    id: window
     width: 1024
     height: 768
     visible: true
     title: qsTr("Hello World")
-    color: "white"
+    color: "transparent"
+    flags: Qt.FramelessWindowHint
+
+    Item {
+        anchors.centerIn: parent
+        height: parent.height - 20
+        width: parent.width - 20
+
+        ShadowItem {
+            anchors.fill: parent
+        }
+
+        Rectangle {
+            id: background
+            anchors.fill: parent
+            color: "white"
+            radius: 4
+            border.width: 1
+            border.color: Qt.darker(color, 1.2)
+            clip: true
+
+            MouseArea {
+                width: parent.width
+                height: 40
+                clip: true
+                property variant clickPos: "1,1"
+
+                onPressed: {
+                    clickPos  = Qt.point(mouse.x,mouse.y)
+                }
+
+                onPositionChanged: {
+                    var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+                    window.x += delta.x;
+                    window.y += delta.y;
+                }
 
 
-    ToolsToolBox {
-    }
 
-    LayersToolBox {
-        y: parent.height - height
-    }
+                Rectangle {
+                    height: parent.height + 5
+                    width: parent.width
+                    color: ColorPalette.sunkenDark
+                    radius: 4
+                    border.width: 1
+                    border.color: Qt.darker(color, 1.2)
+                }
+
+                MenuBar {
+                    anchors.fill: parent
+                        Menu {
+                            title: qsTr("Canvas")
+                            Action { text: qsTr("About...") }
+                            Action { text: qsTr("Help...") }
+                            Action { text: qsTr("Settings...") }
+                            MenuSeparator { }
+                            Action {
+                                text: qsTr("Quit")
+                                onTriggered: {
+                                    window.close();
+                                }
+                            }
+                        }
+                        Menu {
+                            title: qsTr("File")
+                            Action { text: qsTr("New...") }
+                            Action { text: qsTr("Open...") }
+                            Action { text: qsTr("Save") }
+                            Action { text: qsTr("Save As...") }
+                        }
+                        Menu {
+                            title: qsTr("Edit")
+                            Action { text: qsTr("Cut") }
+                            Action { text: qsTr("Copy") }
+                            Action { text: qsTr("Paste") }
+                        }
+                    }
+
+                RowLayout {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.right: parent.right
+                    anchors.rightMargin: 10
+                    spacing: 10
+                    Button {
+                        hoverEnabled: true
+                        text: "Hide"
+                        onClicked: {
+                            window.showMinimized();
+                        }
+                    }
+                    Button {
+                        hoverEnabled: true
+                        text: "Close"
+                        onClicked: {
+                            window.close();
+                        }
+                    }
+                }
+
+            }
 
 
-    ColorsToolBox {
-        x: parent.width - width
+            ToolsToolBox {
+                y: 40
+            }
+
+            LayersToolBox {
+                y: parent.height - height
+            }
+
+
+            ColorsToolBox {
+                y: 40
+                x: parent.width - width
+            }
+        }
     }
 
 }

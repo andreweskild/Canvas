@@ -30,7 +30,7 @@ Item {
     Rectangle {
         id: background
         anchors.fill: parent
-        radius: 5
+        radius: 4
         color: ColorPalette.window
         border.color: Qt.darker(color, 1.1)
         border.width: 1
@@ -40,10 +40,10 @@ Item {
         id: titlebar
         drag.target: control
         drag.minimumX: 0
-        drag.minimumY: 0
+        drag.minimumY: 40
 
-        drag.maximumX: Window.width - control.width
-        drag.maximumY: Window.height - control.height
+        drag.maximumX: Window.width - control.width - 20
+        drag.maximumY: Window.height - control.height - 20
         drag.threshold: 0
         height: 20
         width: parent.width
@@ -55,7 +55,7 @@ Item {
         Rectangle {
             width: parent.width
             height: parent.height + radius
-            radius: 5
+            radius: 4
             color: ColorPalette.raised
             border.color: Qt.darker(color, 1.1)
             border.width: 1

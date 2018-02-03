@@ -14,7 +14,7 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: ColorPalette.raised
-        radius: 5
+        radius: 4
     }
 
     ListView {

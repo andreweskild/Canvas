@@ -47,7 +47,7 @@ Item {
             Rectangle {
                 id: background
                 anchors.fill: parent
-                radius: 5
+                radius: 4
                 color: Qt.hsva(root.hue, 1.0, 1.0, 1.0)
                 border.width: 3
                 border.color: slider.pressed ? "white" :
@@ -71,7 +71,7 @@ Item {
             y: 5
             Rectangle {
                 anchors.fill: parent
-                radius: 5
+                radius: 4
                 gradient: Gradient {
                     GradientStop {
                        position: 0.000
