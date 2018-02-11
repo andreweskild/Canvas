@@ -12,50 +12,16 @@ ApplicationWindow {
     height: 768
     visible: true
     title: qsTr("Hello World")
-    color: "transparent"
-    flags: Qt.FramelessWindowHint
+    color: "white"
 
-    Item {
-        anchors.centerIn: parent
-        height: parent.height - 20
-        width: parent.width - 20
-
-        ShadowItem {
-            anchors.fill: parent
-        }
-
-        Rectangle {
-            id: background
-            anchors.fill: parent
-            color: "white"
-            radius: 4
-            border.width: 1
-            border.color: Qt.darker(color, 1.2)
-            clip: true
-
-            MouseArea {
+            Item {
                 width: parent.width
                 height: 40
-                clip: true
-                property variant clickPos: "1,1"
-
-                onPressed: {
-                    clickPos  = Qt.point(mouse.x,mouse.y)
-                }
-
-                onPositionChanged: {
-                    var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-                    window.x += delta.x;
-                    window.y += delta.y;
-                }
-
-
 
                 Rectangle {
-                    height: parent.height + 5
+                    height: parent.height
                     width: parent.width
                     color: ColorPalette.sunkenDark
-                    radius: 4
                     border.width: 1
                     border.color: Qt.darker(color, 1.2)
                 }
@@ -109,25 +75,22 @@ ApplicationWindow {
                             window.close();
                         }
                     }
-                }
 
-            }
-
-
-            ToolsToolBox {
-                y: 40
-            }
-
-            LayersToolBox {
-                y: parent.height - height
-            }
-
-
-            ColorsToolBox {
-                y: 40
-                x: parent.width - width
-            }
         }
+    }
+
+    ToolsToolBox {
+        y: 40
+    }
+
+    LayersToolBox {
+        y: parent.height - height
+    }
+
+
+    ColorsToolBox {
+        y: 40
+        x: parent.width - width
     }
 
 }
